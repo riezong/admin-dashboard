@@ -26,7 +26,8 @@ body {
     --card-border-radius: 8px;
     --primary-color: orange;
     --secondary-color: navy;
-    --grey: #eee;
+    --light-grey: #eee;
+    --dark-grey: #333;
 }
 
 h1 {
@@ -45,6 +46,30 @@ li {
     gap: 1rem;
 }
 
+input {
+    padding: 0 1rem;
+    border: none;
+}
+
+hr {
+    border: 1px solid var(--light-grey);
+}
+
+.icon {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-grow: 0;
+}
+
+.light {
+    fill: white;
+}
+
+.dark {
+    fill: var(--dark-grey);
+}
+
 .btn {
     padding: .5rem 2rem;
     font-weight: 700;
@@ -54,9 +79,8 @@ li {
     border-radius: var(--border-radius);
 }
 
-input {
-    padding: 0 1rem;
-    border: none;
+.btn:hover {
+    background-color: red;
 }
 
 .container {
@@ -118,7 +142,7 @@ input {
     width: 2rem;
     height: 2rem;
     border-radius: var(--border-radius);
-    background-color: var(--grey);
+    background-color: var(--light-grey);
     flex: 1;
 }
 
@@ -141,7 +165,7 @@ input {
     width: 1.5rem;
     height: 1.5rem;
     flex-grow: 0;
-    background-color: var(--grey);
+    background-color: var(--light-grey);
     border: 1px solid black;
 }
 
@@ -179,21 +203,27 @@ input {
 .main-content {
     height: min-content;
     padding: var(--padding);
-    background-color: var(--grey);
+    background-color: var(--light-grey);
     display: grid;
     grid-template-columns: 3fr 1fr;
     gap: 1.5rem;
 }
 
+.projects {
+    height: min-content;
+}
+
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
     gap: 1.5rem;
 }
 
 .category {
     margin-bottom: 0.5rem;
+    color: var(--dark-grey);
     font-size: 18px;
     font-weight: 700;
 }
@@ -207,11 +237,12 @@ input {
     justify-content: space-between;
     align-items: stretch;
     border-radius: var(--card-border-radius);
+    color: var(--dark-grey);
     background-color: white;
     box-shadow: rgb(0 0 0 / 20%) 2px 5px 5px;
 }
 
-.card .decoration {
+.decoration {
     border-left: var(--card-border-radius) solid var(--secondary-color);
 }
 
@@ -228,9 +259,11 @@ input {
     flex-direction: column;
     gap: 2rem;
     justify-content: space-between;
+    color: grey;
 }
 
 .secondary strong {
+    color: var(--dark-grey);
     font-size: 12px;
     font-weight: 700;
 }

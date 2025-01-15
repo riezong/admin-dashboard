@@ -24,9 +24,13 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
     font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.2;
     --padding: 1.5rem;
     --border-radius: 50px;
     --card-border-radius: 8px;
+    --primary-color: orange;
+    --secondary-color: navy;
+    --grey: #eee;
 }
 
 h1 {
@@ -46,9 +50,10 @@ li {
 }
 
 .container {
+    height: min-content;
     display: grid;
     grid-template: 
-        1fr 5fr /
+        1fr min-content /
         1fr 4fr;
 }
 
@@ -59,12 +64,16 @@ li {
     flex-direction: column;
     gap: 3rem;
     color: white;
-    background-color: blue;
+    background-color: var(--primary-color);
     font-size: 20px;
     font-weight: 700;
 }
 
 .sidebar .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
     font-size: 24px;
 }
 
@@ -105,7 +114,7 @@ li {
     width: 2rem;
     height: 2rem;
     border-radius: var(--border-radius);
-    background-color: whitesmoke;
+    background-color: var(--grey);
     flex: 1;
 }
 
@@ -123,15 +132,25 @@ li {
 }
 
 .profile-picture {
-    width: 4rem;
-    height: 4rem;
-    border-radius: var(--border-radius);
-    background-color: grey;
-}
-
-.small {
     width: 2rem;
     height: 2rem;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+}
+
+.placeholder-icon {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-grow: 0;
+    background-color: var(--grey);
+    border: 1px solid black;
+}
+
+.large {
+    width: 4rem;
+    height: 4rem;
+    flex-grow: 0;
 }
 
 .bottom {
@@ -160,20 +179,28 @@ li {
 }
 
 .main-content {
-    /* height: 90%; */
+    height: min-content;
+    /* resize: both; */
+    /* overflow: auto; */
     padding: var(--padding);
-    background-color: whitesmoke;
+    background-color: var(--grey);
     display: grid;
     grid-template-columns: 3fr 1fr;
-    gap: 1em;
+    gap: 1.5rem;
 }
 
-.projects {
+.card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: 10px repeat(3, 200px);
-    gap: 1em;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1.5rem;
+}
 
+.secondary {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-between;
 }
 
 #your-projects {
@@ -181,51 +208,85 @@ li {
     height: min-content;
 }
 
-.secondary {
+#announcements {
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.category {
+    margin-bottom: 0.5rem;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.card {
+    /* height: min-content; */
+    padding: var(--padding);
     display: flex;
     flex-direction: column;
     gap: 1rem;
-}
-
-#announcements {
-    grid-column: 3;
-    height: min-content;
-}
-
-.cards {
-    height: 200px;
-    padding: 1em;
+    justify-content: space-between;
+    align-items: stretch;
+    border-radius: 0;
+    border-left: var(--card-border-radius) solid var(--secondary-color);
     border-radius: var(--card-border-radius);
     background-color: white;
     box-shadow: rgb(0 0 0 / 20%) 2px 5px 5px;
 }
 
-.announcements-card {
-    height: 250px;
+.card-text > p + p {
+    margin-top: 0.5rem;
+    color: grey;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.card-icons {
+    text-align: right;
+}
+
+.secondary * .secondary-card {
+    flex-grow: 1;
+}
+
+.secondary-card {
+    flex-grow: 1;
+    padding: var(--padding);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     border-radius: var(--card-border-radius);
     background-color: white;
     box-shadow: rgb(0 0 0 / 20%) 2px 5px 5px;
+    font-size: 10px;
 }
 
-.trending-card {
-    height: 250px;
-    border-radius: var(--card-border-radius);
-    background-color: white;
-    box-shadow: rgb(0 0 0 / 20%) 2px 5px 5px;
+.secondary-card strong {
+    font-size: 12px;
+    font-weight: 700;
 }
 
-.placeholder-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: whitesmoke;
-    border: 1px solid black;
+.trending-profile {
+    display: flex;
+    gap: 1rem;
+}
+
+.trending-profile-name {
+    display: flex;
+    flex-direction: column;
 }
 
 .btn {
     padding: .5rem 2rem;
     font-weight: 700;
     color: white;
-    background-color: blue;
+    background-color: var(--primary-color);
     border: none;
     border-radius: var(--border-radius);
+}
+
+hr {
+    /* margin: 1rem 0; */
 }
